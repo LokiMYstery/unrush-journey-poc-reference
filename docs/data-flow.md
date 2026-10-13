@@ -33,7 +33,7 @@ sequenceDiagram
 ## 创建、分批交付与执行
 
 - API前缀`/agentic-player/api/v2`。`POST goals`先返回planning；后台计划返回PLAN。客户端轮询`GET goals/{id}?after=N&waitSeconds=20`，同时取最新阶段元信息和交付增量。
-- 上传`input/split/language`、`clientSessionId/clientActionSeq/decisionVersion`、`context/currentPlayback`及可选catalog。Context沿用Auto的时间、授权定位、本地健康摘要、推荐结果和会话信息；后端补POI/天气与可信音乐画像。原始健康和压力算法留在iOS。
+- 上传`input/split/language`、`clientSessionId/clientActionSeq/decisionVersion`、`context/currentPlayback`及可选catalog。Context沿用Auto的时间、授权定位、本地健康摘要、当前承载场景摘要recommendedScene（不是全量推荐排序）和会话信息；后端补POI/天气与可信音乐画像。原始健康和压力算法留在iOS。
 - 首阶段SELECTION交付后立即准备未来阶段，不等下一阶段开始。未来阶段依序准备共享去重历史，同一检索回合的工具并行。iOS另有独立元信息轮询和未来材料缓存，避免被当前语音阻塞。
 - Goal的ASSESSMENT承载已选音乐的阶段开场语与energy，不是独立前置sensing模型请求。submit_selection共同提交音乐、energy、开场语和回执后短句；同一工具链允许多次模型往返。
 - 原生执行后上传goal/version/phase/run与实际playbackUnitId/songId、success、actualPlaybackState、changeKind。成功且真实playing回执确认后才active并计时。
