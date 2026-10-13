@@ -21,7 +21,7 @@ SYNTHESIS_COUNT = 0
 DEFAULT_VOICES = {
     # Original poc_copy voice/catalog.json; Chinese remains on its original public voice.
     "zh": ("zh_female_jitangnv_uranus_bigtts", "seed-tts-2.0"),
-    "en": ("", "seed-icl-2.0"),
+    "en": ("", ""),
 }
 
 

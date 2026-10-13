@@ -103,9 +103,9 @@
     {
       "path": "app/tts.py",
       "sourceSha256": "97dcc9e5cdc5e41f7f16081bbbfd98750c1b2a598f4d7b914b0f262e6123395d",
-      "publishedSha256": "2a6e898ddafed35210027eb72edfaaae9a7192595ff84dbae6f61f77cfc45496",
+      "publishedSha256": "aa1bcbea45c859e421530ff5a6d10712e84613347a47966ecd99d1adc39eb347",
       "publicationChanges": [
-        "Removed deployment-owned English voice ID; configure VOLCENGINE_TTS_VOICE_ID_EN."
+        "Removed deployment-owned English voice and resource defaults; configure VOLCENGINE_TTS_VOICE_ID_EN and VOLCENGINE_TTS_RESOURCE_ID_EN."
       ]
     }
   ]

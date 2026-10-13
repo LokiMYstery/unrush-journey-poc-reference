@@ -34,10 +34,19 @@ sequenceDiagram
 
 - API前缀`/agentic-player/api/v2`。`POST goals`先返回planning；后台计划返回PLAN。客户端轮询`GET goals/{id}?after=N&waitSeconds=20`，同时取最新阶段元信息和交付增量。
 - 上传`input/split/language`、`clientSessionId/clientActionSeq/decisionVersion`、`context/currentPlayback`及可选catalog。Context沿用Auto的时间、授权定位、本地健康摘要、当前承载场景摘要recommendedScene（不是全量推荐排序）和会话信息；后端补POI/天气与可信音乐画像。原始健康和压力算法留在iOS。
+- 探索页入口和播放页“+”入口使用同一请求参数与同一服务端编排。探索页入口由iOS显示目标准备页并等待首阶段可播放材料；播放页入口继续展示当前播放器和当前音乐，在后台准备目标材料。两者差异是展示门控，不是两套后端链路。
 - 首阶段SELECTION交付后立即准备未来阶段，不等下一阶段开始。未来阶段依序准备共享去重历史，同一检索回合的工具并行。iOS另有独立元信息轮询和未来材料缓存，避免被当前语音阻塞。
 - Goal的ASSESSMENT承载已选音乐的阶段开场语与energy，不是独立前置sensing模型请求。submit_selection共同提交音乐、energy、开场语和回执后短句；同一工具链允许多次模型往返。
 - 原生执行后上传goal/version/phase/run与实际playbackUnitId/songId、success、actualPlaybackState、changeKind。成功且真实playing回执确认后才active并计时。
 - 正常主候选回执复用预生成postReceiptText；实际候选不匹配等兼容路径才补模型解释；失败/技术降级静音。前端等开场语结束再播解释。音乐与开场语并行、不压低音量。
+
+## 音乐加载、语音与阶段激活
+
+后端返回SELECTION只表示“选定候选”，不表示手机已经播放。iOS收到首阶段选择后会解析资源、加载视觉与音频、下载或读取阶段开场语；探索／主页面入口的准备开屏由本阶段原生音乐与对应画面就绪释放，不要求开场语先播完；语音缺失可继续。播放页入口在同一播放器内展示目标准备并保留当前音乐，提交时目标面板即可出现，在本目标首阶段实际播放确认前不计阶段时间。
+
+阶段开场语和目标音乐可以并行开始。音乐音量保持原样；字幕从语音实际可听后逐字显示。原生播放器随后提交playback-receipt，服务端用真实回执决定是否激活阶段、开始按实际播放时间计时，以及是否发送回执后解释。
+
+首阶段SELECTION交付后，后续阶段立即依序检索音乐、预合成开场语，并准备回执后短句文本；未来阶段材料只缓存为prepared。解释语音不提前播，也不把预生成短句当成播放已成功，语音合成／交付仍由真实回执触发。推进阶段时，iOS重新提交当前Context与播放快照；服务端校验版本、阶段、资源绑定和去重历史后再激活。过期run、被取消目标、手动接管后的迟到结果都不会覆盖当前播放。
 
 ## 生命周期接口
 

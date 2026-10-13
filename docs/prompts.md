@@ -7,6 +7,8 @@
 3. **submit_selection**：只选真实召回且可播、符合去重范围的ID；同时提交boost/lower、openingText、postReceiptText。[实际工具schema](../examples/tool-schemas.json)。
 4. **continue_after_receipt**：实际playing且主候选匹配时复用短句，不匹配等兼容路径使用generate_explanation；失败或降级无TTS。
 
+Goal计划、阶段检索和阶段选择沿同一条Responses链继续，但会包含计划请求、工具调用、工具ACK、选择提交等多次模型和工具往返。文档中的“同一条链”只表示上下文连续和previous_response_id继承，不表示一条HTTP请求完成全部阶段。
+
 阶段开场语自然简短，最多一句能量；回执短句不重复能量，以音乐和一个可选轻建议为主。表达情绪先理解陪伴，不强迫积极/任务化，不作诊疗或持续聆听承诺。
 
 仅基于可用事实首次简提天气、地点与定性压力；历史参考不称实时，同样环境不反复说，未来阶段主要讲音乐和目标。继承开场语和建议历史，减少话术重复。
