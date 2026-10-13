@@ -1,0 +1,14 @@
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+data/
+app/assets/
+*.sqlite*
+*.npz
+*.wav
+*.log
+.DS_Store
