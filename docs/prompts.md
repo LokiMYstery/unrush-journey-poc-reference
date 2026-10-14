@@ -18,3 +18,5 @@ Goal计划、阶段检索和阶段选择沿同一条Responses链继续，但会�
 [完整实际模板](prompt-templates.md)从本次源码自动提取。generate_assessment是普通Auto路径，不是Goal主路径；同一工具链不等于一次模型HTTP请求。
 
 共用场景来源合同更新：systemRecommendation 弱参考；currentScene 只来自明确选择；Goal 的目标/阶段优先；potentialIntent 仅 Auto 预留。见 [场景合同](scene-intent-contract.md)。
+
+潜在意图语义修订：非空 Auto 通知输入是本次调节需求，音乐与具体轻建议要主动承接，如压力舒缓／放慢呼吸、日照／出去走走；不是泛化背景。见源码 NOTIFICATION_NEED_RULE。
