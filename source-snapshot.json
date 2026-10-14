@@ -1,5 +1,5 @@
 {
-  "referenceDate": "2026-10-13",
+  "referenceDate": "2026-10-14",
   "iosBaselineCommit": "a2db0695e4e50280d9ce5da4a5020fe7de4d83a6",
   "purpose": "Journey internalization data flow, orchestration and actual prompt implementation",
   "runtimeAssets": "Not included: private music catalogs/profiles, media, embeddings, data, logs and credentials.",
@@ -12,8 +12,8 @@
     },
     {
       "path": "app/agent.py",
-      "sourceSha256": "3064040003c15ce9c9f6b3db7f49b3f4310d3a6b094b976bcab0997a3d4b572f",
-      "publishedSha256": "3064040003c15ce9c9f6b3db7f49b3f4310d3a6b094b976bcab0997a3d4b572f",
+      "sourceSha256": "b64409f5daf0bb3c6a92059a2caadc78d14ac98612bcad2e6fafd6955bab589f",
+      "publishedSha256": "b64409f5daf0bb3c6a92059a2caadc78d14ac98612bcad2e6fafd6955bab589f",
       "publicationChanges": []
     },
     {
@@ -36,8 +36,8 @@
     },
     {
       "path": "app/environment.py",
-      "sourceSha256": "db061e69af40589847a93505e2b6977175ee3d7b93b1259284509ceb1abf7eea",
-      "publishedSha256": "db061e69af40589847a93505e2b6977175ee3d7b93b1259284509ceb1abf7eea",
+      "sourceSha256": "67669cd18f870ce61f256d7db1903dda4214f86eef758976af1508ff66c3e943",
+      "publishedSha256": "67669cd18f870ce61f256d7db1903dda4214f86eef758976af1508ff66c3e943",
       "publicationChanges": []
     },
     {
@@ -105,7 +105,7 @@
       "sourceSha256": "97dcc9e5cdc5e41f7f16081bbbfd98750c1b2a598f4d7b914b0f262e6123395d",
       "publishedSha256": "aa1bcbea45c859e421530ff5a6d10712e84613347a47966ecd99d1adc39eb347",
       "publicationChanges": [
-        "Removed deployment-owned English voice and resource defaults; configure VOLCENGINE_TTS_VOICE_ID_EN and VOLCENGINE_TTS_RESOURCE_ID_EN."
+        "Public voice/resource defaults retained; runtime credentials excluded."
       ]
     }
   ]

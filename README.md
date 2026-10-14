@@ -44,3 +44,7 @@ python3 -m unittest discover -s tests -v
 完整服务：Python 3.11+，安装requirements.txt，提供上述资产并注入环境变量，再运行`uvicorn app.main:app`。本地CLAP额外依赖见requirements-retrieval.txt。
 
 这是实现参考，不是生产发布。客户端跨启动/跨设备目标恢复、长期统计、通知和持续主动感知仍未接入；后端部分编排恢复不代表客户端已支持跨启动恢复。
+
+## 2026-10-14：共用场景来源与语音规则
+
+共用后端将系统推荐、用户当前场景、Auto 通知潜在意图区分。Goal 仍以用户目标与阶段为主，不携带通知潜在意图。合同、客户端接入边界及真实模型 smoke 验证见 [docs/scene-intent-contract.md](docs/scene-intent-contract.md)。
